@@ -1,0 +1,13 @@
+<div style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
+  Office Edward Rollins<br>
+  <span id="time" style="color:blue;"></span><br><br>
+  <a href="mailto:teddy@edwardrollins.com" target="_blank">
+    <button>Contact</button>
+  </a>
+</div>
+
+<script>
+setInterval(() => {
+  document.getElementById("time").textContent = new Date().toLocaleString();
+}, 1000);
+</script>
