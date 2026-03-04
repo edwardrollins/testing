@@ -4,11 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* mobile only */
+/* desktop default */
+#office {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* mobile adjustment only */
 @media (max-width:600px){
   #office{
-    transform: scale(1.8);
-    transform-origin: top left;
+    font-size: 1.4rem;
   }
 }
 </style>
@@ -17,7 +25,7 @@
 
 <body>
 
-<div id="office" style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
+<div id="office">
   Office Edward Rollins<br>
   <span id="time" style="color:blue;"></span><br><br>
   <a href="mailto:teddy@edwardrollins.com" target="_blank">
