@@ -4,12 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
 button{
   font-family:'Times New Roman', Times, serif;
-
   appearance:none;
   -webkit-appearance:none;
-
   padding:2px 6px;
   border:0.5px solid #000;
   border-radius:4px;
@@ -17,28 +16,124 @@ button{
   color:#000;
   font-size:14px;
   cursor:pointer;
+  margin-top:2px;
 }
+
+#office-block{
+  position:fixed;
+  top:0;
+  left:0;
+  padding:20px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+#office{
+  margin-bottom:6px;
+}
+
+#time{
+  color:blue;
+  display:block;
+  margin-bottom:6px;
+}
+
+#info{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  font-family:'Times New Roman', Times, serif;
+  color:#eee;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
-  Office Edward Rollins<br>
-  <span id="time" style="color:blue;"></span><br><br>
-  <a href="mailto:teddy@edwardrollins.com" target="_blank">
-    <button>Contact</button>
-  </a>
+<div id="office-block">
+
+<div id="office">
+Office Edward Rollins
 </div>
 
+<span id="time"></span>
+
+<a href="mailto:teddy@edwardrollins.com" target="_blank">
+<button>Contact</button>
+</a>
+
+</div>
+
+<div id="info"></div>
+
 <script>
+
 function updateTime(){
-  document.getElementById("time").textContent = new Date().toLocaleString();
+  const now = new Date();
+
+  const time = now.toLocaleString("en-US",{
+    timeZone:"America/Los_Angeles"
+  });
+
+  document.getElementById("time").textContent = time;
 }
 
 updateTime();
 setInterval(updateTime,1000);
+
+
+function getOS(){
+  const ua = navigator.userAgent.toLowerCase();
+  const p = navigator.platform.toLowerCase();
+
+  if(p.includes("mac")) return "macOS";
+  if(p.includes("win")) return "Windows";
+  if(p.includes("linux")) return "Linux";
+  if(ua.includes("iphone") || ua.includes("ipad")) return "iOS";
+  if(ua.includes("android")) return "Android";
+
+  return "Unknown OS";
+}
+
+function getBrowser(){
+  const ua = navigator.userAgent;
+
+  if(ua.includes("Chrome") && !ua.includes("Edg"))
+    return "Chrome " + ua.match(/Chrome\/([\d.]+)/)[1];
+
+  if(ua.includes("Safari") && !ua.includes("Chrome"))
+    return "Safari " + ua.match(/Version\/([\d.]+)/)[1];
+
+  if(ua.includes("Firefox"))
+    return "Firefox " + ua.match(/Firefox\/([\d.]+)/)[1];
+
+  if(ua.includes("Edg"))
+    return "Edge " + ua.match(/Edg\/([\d.]+)/)[1];
+
+  return "Unknown Browser";
+}
+
+function updateInfo(){
+
+  const os = getOS();
+  const browser = getBrowser();
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  document.getElementById("info").innerHTML = `
+    ${os}<br>
+    ${browser}<br>
+    ${width} × ${height}
+  `;
+}
+
+updateInfo();
+window.addEventListener("resize",updateInfo);
+
 </script>
 
 </body>
