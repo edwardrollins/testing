@@ -4,20 +4,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* desktop default */
-#office {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  font-family: 'Times New Roman', Times, serif;
-}
+button{
+  font-family:'Times New Roman', Times, serif;
 
-/* mobile adjustment only */
-@media (max-width:600px){
-  #office{
-    font-size: 1.4rem;
-  }
+  /* remove browser styling */
+  appearance:none;
+  -webkit-appearance:none;
+
+  /* recreate desktop button look */
+  padding:2px 6px;
+  border:1px solid #000;
+  border-radius:4px;
+  background:#eee;
+  color:#000;
+  font-size:14px;
+  cursor:pointer;
 }
 </style>
 
@@ -25,7 +26,7 @@
 
 <body>
 
-<div id="office">
+<div style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
   Office Edward Rollins<br>
   <span id="time" style="color:blue;"></span><br><br>
   <a href="mailto:teddy@edwardrollins.com" target="_blank">
@@ -34,12 +35,12 @@
 </div>
 
 <script>
-function updateTime() {
+function updateTime(){
   document.getElementById("time").textContent = new Date().toLocaleString();
 }
 
 updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateTime,1000);
 </script>
 
 </body>
