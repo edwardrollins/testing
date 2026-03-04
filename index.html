@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
 <div style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
   Office Edward Rollins<br>
   <span id="time" style="color:blue;"></span><br><br>
@@ -7,7 +15,13 @@
 </div>
 
 <script>
-setInterval(() => {
+function updateTime() {
   document.getElementById("time").textContent = new Date().toLocaleString();
-}, 1000);
+}
+
+updateTime();
+setInterval(updateTime, 1000);
 </script>
+
+</body>
+</html>
