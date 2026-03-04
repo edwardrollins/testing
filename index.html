@@ -2,11 +2,22 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* mobile only */
+@media (max-width:600px){
+  #office{
+    transform: scale(1.8);
+    transform-origin: top left;
+  }
+}
+</style>
+
 </head>
 
 <body>
 
-<div style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
+<div id="office" style="position:fixed; top:0; left:0; padding:20px; font-family:'Times New Roman', Times, serif;">
   Office Edward Rollins<br>
   <span id="time" style="color:blue;"></span><br><br>
   <a href="mailto:teddy@edwardrollins.com" target="_blank">
